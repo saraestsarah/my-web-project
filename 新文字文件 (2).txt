@@ -1,0 +1,38 @@
+import requests
+from bs4 import BeautifulSoup
+
+# 定?网站的URL
+URL = 'http://www.amazon.com/Funny-Data-Systems-Business-Analyst/dp/B07FNW9FGJ/ref=sr_1_3?dchild=1&keywords=data%2Banalyst%2Btshirt&qid=1626655184&sr=8-3&customId=B0752XJYNL&th=1'
+
+# 定??求?
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", 
+    "DNT": "1", 
+    "Connection": "close", 
+    "Upgrade-Insecure-Requests": "1"
+}
+
+# 直接?取网??容
+page = requests.get(URL, headers=headers)
+soup1 = BeautifulSoup(page.content, "html.parser")
+
+# 提取??
+title = soup1.find(id='productTitle')
+if title:
+    title = title.get_text().strip()
+else:
+    title = "Title not found"
+
+# 提取价格
+price = soup1.find(id='priceblock_ourprice')
+if not price:
+    price = soup1.find(id='priceblock_dealprice')  # Amazon 有?使用??ID
+if price:
+    price = price.get_text().strip()
+else:
+    price = "Price not found"
+
+print(title)
+print(price)
