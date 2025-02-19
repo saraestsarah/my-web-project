@@ -1,0 +1,141 @@
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the page to scrape
+url = "https://www.dsd.gov.hk/EN/Sewage_Services_Charging_Scheme/Sewage_Services_Charges/index.html"
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Find the table body using the provided XPath-like structure
+    table_body = soup.select_one('div > div:nth-of-type(3) > div > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div > table > tbody')
+    
+    # Extract rows from the table body
+    rows = table_body.find_all('tr')
+    
+    # Iterate through each row and print the data
+    for row in rows:
+        columns = row.find_all('td')
+        data = [col.get_text(strip=True) for col in columns]
+        print(data)
+else:
+    print("Failed to retrieve the webpage."
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the page to scrape
+url = "https://www.lcsd.gov.hk/en/hkch/hiringinformation/scale/basichirecharges.html"
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Select the specific row in the first table
+    row = soup.select_one('div > div > div > table:nth-of-type(1) > tbody > tr:nth-of-type(10)')
+    
+    # Extract and print the data from the row
+    if row:
+        data = [col.get_text(strip=True) for col in row.find_all('td')]
+        print(data)
+    else:
+        print("Row not found.")
+else:
+    print("Failed to retrieve the webpage.")
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Select the specific row in the first table
+    row = soup.select_one('div > div > div > table:nth-of-type(1) > tbody > tr:nth-of-type(11)')
+    
+    # Extract and print the data from the row
+    if row:
+        data = [col.get_text(strip=True) for col in row.find_all('td')]
+        print(data)
+    else:
+        print("Row not found.")
+else:
+    print("Failed to retrieve the webpage.")
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the page to scrape
+url = "https://www.lcsd.gov.hk/en/hkch/hiringinformation/scale/basichirecharges.html"
+
+# Send a GET request to the URL
+response = requests.get(url)
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Select the specific row in the first table
+    row = soup.select_one('div > div > div > table:nth-of-type(1) > tbody > tr:nth-of-type(14)')
+    
+    # Extract and print the data from the row
+    if row:
+        data = [col.get_text(strip=True) for col in row.find_all('td')]
+        print(data)
+    else:
+        print("Row not found.")
+else:
+    print("Failed to retrieve the webpage.")
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Select the specific row in the first table
+    row = soup.select_one('div > div > div > table:nth-of-type(1) > tbody > tr:nth-of-type(15)')
+    
+    # Extract and print the data from the row
+    if row:
+        data = [col.get_text(strip=True) for col in row.find_all('td')]
+        print(data)
+    else:
+        print("Row not found.")
+else:
+    print("Failed to retrieve the webpage.")
+
+
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the page to scrape
+url = "https://www.lcsd.gov.hk/en/beach/swim-intro/swim-admis.html"
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Select the specific row in the first table
+    row = soup.select_one(' div:nth-of-type(1) > div > div:nth-of-type(2) > table:nth-of-type(1)')
+    
+    # Extract and print the data from the row
+    if row:
+        data = [col.get_text(strip=True) for col in row.find_all('td')]
+        print(data)
+    else:
+        print("Row not found.")
+else:
+    print("Failed to retrieve the webpage.")
+
